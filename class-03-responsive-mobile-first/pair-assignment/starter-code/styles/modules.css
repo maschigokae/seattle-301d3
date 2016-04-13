@@ -58,7 +58,7 @@
   text-decoration: none;
 }
 
-/* TODO: Now add styles for how things should look on a larger screen (hint: min is in!):
+/* DONE: Now add styles for how things should look on a larger screen (hint: min is in!):
          - Hide the hamburger.
          - Main should be all on one row, with padding spaced better for a larger screen.
          - Just, ya know, try to make it look good! */
@@ -73,5 +73,8 @@
   }
   .main-nav li {
     display: inline-block;
+  }
+  main {
+    padding: 0 1em .2em 1em;
   }
 }
