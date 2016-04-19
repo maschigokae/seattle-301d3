@@ -47,7 +47,7 @@
   // that will execute once the loading of articles is done. We do this because we might want
   // to call other view functions, and not just the initIndexPage() that we are replacing.
   // Now, instead of calling articleView.initIndexPage(), we can just run our callback.
-  Article.fetchAll = function() {
+  Article.fetchAll = function(articleView) {
     if (localStorage.hackerIpsum) {
       $.ajax({
         type: 'HEAD',
@@ -112,4 +112,4 @@
   };
 
   module.Article = Article;
-});
+})(window);
