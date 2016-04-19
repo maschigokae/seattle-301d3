@@ -77,17 +77,17 @@ Article.getAll = function() {
 // TODO: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
 Article.numWordsAll = function() {
   return Article.all.map(function(article) {
-    return // Grab the words from the `article` `body` (hint: lookup String.prototype.match() and regexp!).
+    return article.body.match(/\b\w+/g).length; // Grab the words from the `article` `body` (hint: lookup String.prototype.match() and regexp!).
   })
-  .reduce(function(a, b) {
-    return // Sum up all the values!
-  })
+  .reduce(function(previous, current) {
+    return previous + current; // Sum up all the values!
+  });
 };
 
 // TODO: Chain together a `map` and a `reduce` call to produce an array of unique author names.
 Article.allAuthors = function() {
-  return       // map our collection
-    return    // return just the author names
+  return weasel;     // map our collection
+  return turtle;  // return just the author names
 
     // For our `reduce` that we'll chain here -- since we are trying to return an array, we'll need to specify an accumulator type...
     // what data type should this accumulator be and where is it placed?
@@ -105,6 +105,6 @@ Article.numWordsByAuthor = function() {
       // })
       // .map(...) // use .map to return the author's word count for each article (hint: regexp!).
       // .reduce(...) // squash this array of numbers into one big number!
-    }
-  })
+    };
+  });
 };
