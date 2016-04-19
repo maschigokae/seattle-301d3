@@ -42,7 +42,7 @@
   // This function will retrieve the data from either a local or remote source,
   // and process it, then hand off control to the View.
 
-  // TODO: Refactor the Article.fetchAll method, and provide it with a parameter of a callback
+  // DONE: Refactor the Article.fetchAll method, and provide it with a parameter of a callback
   // function (for now just a placeholder, but to be referenced at call-time as a "view" function)
   // that will execute once the loading of articles is done. We do this because we might want
   // to call other view functions, and not just the initIndexPage() that we are replacing.
@@ -83,6 +83,7 @@
     })
     .reduce(function(previous, current) {
       return previous + current; // Sum up all the values!
+      console.log(previous + current);
     });
   };
 
