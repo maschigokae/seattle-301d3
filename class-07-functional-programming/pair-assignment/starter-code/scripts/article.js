@@ -104,17 +104,22 @@
   };
 
   Article.numWordsByAuthor = function() {
-    // TODO: Transform each element into an object with 2 properties: One for
+    // DONE: Transform each element into an object with 2 properties: One for
     // the author's name, and one for the total number of words across the matching articles
     // written by the specified author.
     return Article.allAuthors().map(function(author) {
       return {
-        // name:
-        // numWords: someCollection.filter(function(curArticle) {
-        //  what do we return here to check for matching authors?
-        // })
-        // .map(...) // use .map to return the author's word count for each article (hint: regexp!).
-        // .reduce(...) // squash this array of numbers into one big number!
+        name: author,
+        numWords: Article.all.filter(function(curArticle) {
+          return curArticle.author === author;
+         //what do we return here to check for matching authors?
+        })
+        .map(function(article) {
+          return article.body.match(/\b\w+/g).length;
+        }) // use .map to return the author's word count for each article (hint: regexp!).
+        .reduce(function(previous, current){
+          return previous + current;
+        }) // squash this array of numbers into one big number!
       };
     });
   };
