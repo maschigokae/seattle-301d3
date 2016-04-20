@@ -108,9 +108,9 @@
     // DONE: Transform each element into an object with 2 properties: One for
     // the author's name, and one for the total number of words across the matching articles
     // written by the specified author.
-    return Article.allAuthors().map(function(author) {
+    return Article.allAuthors().map(function(authorInstance) {
       return {
-        name: author,
+        name: authorInstance,
         numWords: Article.all.filter(function(curArticle) {
           return curArticle.author === author;
          //what do we return here to check for matching authors?
