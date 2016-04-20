@@ -56,7 +56,7 @@
           var eTag = xhr.getResponseHeader('eTag');
           if (!localStorage.eTag || eTag !== localStorage.eTag) {
             localStorage.eTag = eTag;
-            Article.getAll();
+            Article.getAll(dynamicFunctionCall);
           } else {
             Article.loadAll(JSON.parse(localStorage.hackerIpsum));
             // articleView.initIndexPage();
@@ -65,15 +65,15 @@
         }
       });
     } else {
-      Article.getAll();
+      Article.getAll(dynamicFunctionCall);
     }
   };
 
-  Article.getAll = function() {
+  Article.getAll = function(anotherDynamicFunctionCall) {
     $.getJSON('/data/hackerIpsum.json', function(responseData) {
       Article.loadAll(responseData);
       localStorage.hackerIpsum = JSON.stringify(responseData);
-      articleView.initIndexPage();
+      anotherDynamicFunctionCall();
     });
   };
 
