@@ -112,7 +112,7 @@
       return {
         name: authorInstance,
         numWords: Article.all.filter(function(curArticle) {
-          return curArticle.author === author;
+          return curArticle.author === authorInstance;
          //what do we return here to check for matching authors?
         })
         .map(function(article) {
