@@ -3,10 +3,7 @@
 
   aboutController.index = function() {
     // TODO: Define a function that hides all main section elements, and then reveals just the #about section:
-    
-    //note: temp placeholders below...
-    $('most-stuff').hide();
-    $('#about').show();
+    $('#about').show().siblings().hide();
   };
 
   module.aboutController = aboutController;
