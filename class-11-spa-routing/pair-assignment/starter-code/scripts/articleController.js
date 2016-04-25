@@ -11,6 +11,8 @@
 
     // TODO: But wait! There's more: Also be sure to hide all the main section
     //  elements, and reveal the articles section:
+    $('main > section').hide();
+    $('#articles').show();
   };
 
   module.articlesController = articlesController;
