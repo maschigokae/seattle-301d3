@@ -4,7 +4,7 @@
   Article.createTable();  // Ensure the database table is properly initialized
 
   articlesController.index = function(ctx, next) {
-    debugger;
+    // debugger;
     articleView.index(ctx.articles);
     console.log(ctx.articles);
   };
@@ -47,6 +47,8 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This method is called when the user hits the route '/'. It recieves the context object from page as well as the callback, in this case articlesController.index. If there are any articles already loaded into Article.all, that array is assigned to the context object for reference by the next callback, then the callback (articlesController.index) is run. If Article.all is empty, Article.fetchAll is run. This method uses some logic to load data from our database or the locally stored JSON, depending on the circumstance. Article.fetchAll will ultimately run the callback articleData, which assings our array of all articles to our context object, then runs the callback, which is articleController.index.
+
   articlesController.loadAll = function(ctx, next) {
     var articleData = function(allArticles) {
       ctx.articles = Article.all;

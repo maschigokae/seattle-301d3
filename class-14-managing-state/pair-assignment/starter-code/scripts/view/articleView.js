@@ -14,6 +14,7 @@
 
   // COMMENT: What does this method do?  What is it's execution path?
   // This method is called by articleView.index. We start with two variables, options and template. template is a compiled version of the Handlebars template we build in our index.html. options is an array of html elements that represent our options values for each author. We get this by mapping our template against over our array of all authors. Next, if the option filter is already populated, our options are appended to the dom using JQuery. Next, we call call Article.allCategories and pass it a function that will serve as a callback. This function accepts a variable rows, which will be for rows passed in from the database. It checks to see if the filter isn't populated, then uses JQuery to append our rows to the dom. It does this by mapping them against our template.
+  
   articleView.populateFilters = function() {
     var options,
       template = Handlebars.compile($('#option-template').text());
@@ -21,6 +22,7 @@
     // Example of using model method with FP, synchronous approach:
     // This method is dependant on info being in the DOM. Only authors of shown articles are loaded.
     options = Article.allAuthors().map(function(author) { return template({val: author}); });
+    // console.log($('#author-filter option'));
     if ($('#author-filter option').length < 2) { // Prevent duplication
       $('#author-filter').append(options);
     };
