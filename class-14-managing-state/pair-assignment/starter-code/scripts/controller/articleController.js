@@ -6,6 +6,7 @@
   articlesController.index = function(ctx, next) {
     debugger;
     articleView.index(ctx.articles);
+    console.log(ctx.articles);
   };
 
   // COMMENT: What does this method do?  What is it's execution path?

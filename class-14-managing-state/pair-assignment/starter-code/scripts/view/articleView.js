@@ -13,6 +13,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This method is called by articleView.index. We start with two variables, options and template. template is a compiled version of the Handlebars template we build in our index.html. options is an array of html elements that represent our options values for each author. We get this by mapping our template against over our array of all authors. Next, if the option filter is already populated, our options are appended to the dom using JQuery. Next, we call call Article.allCategories and pass it a function that will serve as a callback. This function accepts a variable rows, which will be for rows passed in from the database. It checks to see if the filter isn't populated, then uses JQuery to append our rows to the dom. It does this by mapping them against our template.
   articleView.populateFilters = function() {
     var options,
       template = Handlebars.compile($('#option-template').text());
@@ -38,6 +39,8 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+ // This function is called by articleView.index. This uses JQuery to select our filters unordered list, then run the following event delegation exactly once. On a change of the the select element that we use for our filters, we run the following function. We set a variable named resource to the id of the current filter we're working on, but with the '-filter' removed. Then we call page with a string of resource, and the filter's current value, only with whitespace replaced with '+'. These are separated by slashes.
+
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       resource = this.id.replace('-filter', '');
@@ -118,6 +121,8 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This function is called by articlesController.index, and takes articles, which had previously been attached to the context object. It shows elements with the articles ID, and hides all sibling elements. Then it removes all article elements nested under and article ID. Next, for each article passed in from our context object we render them using another function that uses Handlebars and our articles template, then appends those to our articles ID section. Next we call functions to populate and handle filters, which I described above.
+
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
